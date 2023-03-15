@@ -7,8 +7,12 @@ public class Sprite {
     public int[] pixels;
     private SpriteSheet sheet;
 
+    //util
+
     public static Sprite black = new Sprite(16, 16, 0x000000);
     public static Sprite purple = new Sprite(16, 16, 0xff00ff);
+
+    //tiles
 
     public static Sprite snow1 = new Sprite(0, 64, 16, 16, SpriteSheet.world);
     public static Sprite snow2 = new Sprite(16, 64, 16, 16, SpriteSheet.world);
@@ -23,8 +27,12 @@ public class Sprite {
     public static Sprite wood_wall = new Sprite(448, 80, 16, 16, SpriteSheet.world);
     public static Sprite wood_wall_side = new Sprite(464, 64, 16, 16, SpriteSheet.world);
 
+    //nodes
+
     public static Sprite tree = new Sprite(0, 0, 32, 64, SpriteSheet.world);
     public static Sprite rock = new Sprite(64, 32, 32, 32, SpriteSheet.world);
+
+    //player
 
     public static Sprite player_forward = new Sprite(0, 0, 16, 16, SpriteSheet.player);
     public static Sprite player_backward = new Sprite(16, 0, 16, 16, SpriteSheet.player);
@@ -34,7 +42,14 @@ public class Sprite {
     public static Sprite player_backward_walk = new Sprite(4*16, 0, 16, 16, SpriteSheet.player);
     public static Sprite player_side_walk = new Sprite(80, 0, 16, 16, SpriteSheet.player);
 
-    public static Sprite UI_crosshair_build = new Sprite(0, 0, 16, 16, SpriteSheet.UI);
+    //items
+
+    public static Sprite tool_hammer = new Sprite(0, 0, 16, 16, SpriteSheet.items);
+    public static Sprite tool_pickaxe = new Sprite(16, 0, 16, 16, SpriteSheet.items);
+
+    //UI
+
+    public static Sprite item_frame = new Sprite(16, 0, 16, 16, SpriteSheet.UI);
 
     public Sprite(int x, int y, int w, int h, SpriteSheet sheet){
         this.width = w;

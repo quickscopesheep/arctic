@@ -4,6 +4,8 @@ import com.sheep.game.entity.Entity;
 import com.sheep.game.gfx.Screen;
 import com.sheep.game.level.Level;
 
+import java.awt.*;
+
 public abstract class Node extends Entity {
     public float health;
 

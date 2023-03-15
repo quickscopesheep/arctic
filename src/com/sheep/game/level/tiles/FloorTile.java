@@ -11,7 +11,7 @@ public class FloorTile extends Tile{
 
     @Override
     public void render(int x, int y, Screen screen, Level level) {
-        screen.renderSprite(x, y, Sprite.wood_floor, false, false);
+        screen.renderSprite(x, y,0, Sprite.wood_floor, false, false);
     }
 
     @Override

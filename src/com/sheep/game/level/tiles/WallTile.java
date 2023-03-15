@@ -11,7 +11,7 @@ public class WallTile extends Tile{
 
     @Override
     public void render(int x, int y, Screen screen, Level level) {
-        screen.renderSprite(x, y, Sprite.wood_wall, false, false);
+        screen.renderSprite(x, y,0, Sprite.wood_wall, false, false);
     }
 
     @Override

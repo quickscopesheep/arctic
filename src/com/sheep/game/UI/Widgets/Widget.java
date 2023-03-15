@@ -7,8 +7,8 @@ import com.sheep.game.util.AudioPlayer;
 import com.sheep.game.util.input.Mouse;
 
 public abstract class Widget{
-    int x, y, w, h;
-    int paddingX, paddingY;
+    protected int x, y, w, h;
+    protected int paddingX, paddingY;
 
     Game game;
 
@@ -51,11 +51,14 @@ public abstract class Widget{
         if(drawBackground || drawBorder) {
             for (int y = this.y - (h / 2) -paddingX/2; y < this.y + (h / 2) + paddingY/2; y++) {
                 for (int x = this.x - (w / 2) - paddingX/2; x < this.x + (w / 2) + paddingX/2; x++) {
+                    if(x >= Game.WIDTH || x < 0 || y >= Game.HEIGHT || y < 0)
+                        continue;
+
                     if(drawBackground)
                         screen.pixels[y * screen.getWidth() + x] = backgroundColour;
                     if(drawBorder)
-                        if (x == this.x + (w / 2) + paddingX - 2 || x == this.x - (w / 2) - paddingX + 1 || y == this.y - (h / 2) - paddingY + 1
-                                || y == this.y + (h / 2) + paddingY - 2) {
+                        if (x == this.x + (w / 2) + paddingX - 1 || x == this.x - (w / 2) - paddingX || y == this.y - (h / 2) - paddingY
+                                || y == this.y + (h / 2) + paddingY - 1) {
                             screen.pixels[y * screen.getWidth() + x] = borderColour;
                         }
                 }

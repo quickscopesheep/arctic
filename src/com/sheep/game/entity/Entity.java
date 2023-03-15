@@ -49,6 +49,8 @@ public abstract class Entity {
         return new Rectangle((int)x + xBoundOffset, (int)y + yBoundOffset, xBound, yBound);
     }
 
+    public abstract Rectangle GetDrawBounds();
+
     public Rectangle GetBounds(int offsetX, int offsetY){
         return new Rectangle((int)x + xBoundOffset + offsetX, (int)y + yBoundOffset + offsetY, xBound, yBound);
     }

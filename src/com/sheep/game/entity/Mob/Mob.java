@@ -1,9 +1,11 @@
 package com.sheep.game.entity.Mob;
 
 import com.sheep.game.entity.Entity;
-import com.sheep.game.Game;
 import com.sheep.game.gfx.Screen;
+import com.sheep.game.item.Item;
 import com.sheep.game.level.Level;
+
+import java.awt.*;
 
 public class Mob extends Entity {
     protected int dirX, dirY;
@@ -11,6 +13,8 @@ public class Mob extends Entity {
     protected float health;
     protected float maxHealth;
     float knockBackX, knockBackY, knockBackTime;
+
+    Item item;
 
     public Mob(float x, float y, int xBound, int yBound, float maxHealth, Level level) {
         super(x, y, level);
@@ -28,6 +32,17 @@ public class Mob extends Entity {
         dirX = 1;
         setxBound(xBound);
         setyBound(yBound);
+    }
+
+    public void useTool(){
+        item.use();
+    }
+
+    public void equipItem(Item item){
+        if(this.item != null)
+            this.item.onUnequipped();
+        this.item = item;
+        this.item.onEquip(this);
     }
 
     @Override
@@ -57,7 +72,6 @@ public class Mob extends Entity {
                 collidingX = collision(e, ax, 0) || collidingX;
                 collidingY = collision(e, 0, ay) || collidingY;
             }
-
         }
 
         if(!collision(ax, 0) && !collidingX){
@@ -87,6 +101,11 @@ public class Mob extends Entity {
         if(health <= 0) remove();
     }
 
+    @Override
+    public Rectangle GetDrawBounds() {
+        return new Rectangle((int) x, (int) y, 16, 16);
+    }
+
     public float getHealth(){
         return health;
     }
@@ -113,5 +132,9 @@ public class Mob extends Entity {
 
     public void setDirY(int dirY) {
         this.dirY = dirY;
+    }
+
+    public Item getItem() {
+        return item;
     }
 }

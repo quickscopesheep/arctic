@@ -5,6 +5,8 @@ import com.sheep.game.gfx.Sprite;
 import com.sheep.game.level.Level;
 import com.sheep.game.level.tiles.Tile;
 
+import java.awt.*;
+
 public class Tree extends Node{
     public Tree(float startX, float startY, Level level) {
         super(startX, startY, level, 100);
@@ -27,6 +29,11 @@ public class Tree extends Node{
 
     @Override
     public void render(Screen screen) {
-        screen.renderSprite((int)x, (int)y, Sprite.tree, false, false);
+        screen.renderSprite((int)x, (int)y, 1, Sprite.tree, false, false);
+    }
+
+    @Override
+    public Rectangle GetDrawBounds() {
+        return new Rectangle((int)x, (int)y, 32, 64);
     }
 }

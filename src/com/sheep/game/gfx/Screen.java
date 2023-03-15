@@ -6,6 +6,7 @@ import java.util.Arrays;
 public class Screen {
     private final int width, height;
     public int[] pixels;
+    public int[] depth;
 
     public int xOffset, yOffset;
 
@@ -17,6 +18,7 @@ public class Screen {
         this.width = width;
         this.height = height;
         pixels = new int[width * height];
+        depth = new int[width*height];
 
         generateFontSprites(SpriteSheet.fontmap, 8);
     }
@@ -31,7 +33,7 @@ public class Screen {
         }
     }
 
-    public void renderSprite(int xp, int yp, Sprite sprite, boolean flipped, boolean fixed){
+    public void renderSprite(int xp, int yp, int d, Sprite sprite, boolean flipped, boolean fixed){
         if(!fixed){
             xp -= xOffset;
             yp -= yOffset;
@@ -52,9 +54,12 @@ public class Screen {
                 if(xa > width - 1) continue;
                 if(ya > height - 1) continue;
 
+
                 int col = sprite.pixels[y * sprite.getWidth() + xs];
-                if(col != 0xffff00ff)
+                if(col != 0xffff00ff && d >= depth[ya*width+xa]){
                     pixels[ya * width + xa] = col;
+                    depth[ya*width+xa] = d;
+                }
             }
         }
     }
@@ -101,6 +106,7 @@ public class Screen {
 
     public void clear(){
         Arrays.fill(pixels, 0x000000);
+        Arrays.fill(depth, 0);
     }
 
     public int getWidth() {

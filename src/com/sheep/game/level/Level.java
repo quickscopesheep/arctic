@@ -56,7 +56,7 @@ public abstract class Level {
         }
 
         for (Entity e : entities) {
-            if(screen.GetScreenRect().intersects(e.GetBounds()))
+            if(screen.GetScreenRect().intersects(e.GetDrawBounds()))
                 e.render(screen);
         }
     }

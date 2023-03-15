@@ -5,7 +5,6 @@ import com.sheep.game.UI.Widgets.ButtonWidget;
 import com.sheep.game.UI.Widgets.TextWidget;
 import com.sheep.game.UI.Widgets.VerticalLayoutGroup;
 import com.sheep.game.UI.Widgets.buttonFunctions.QuitGameCallback;
-import com.sheep.game.UI.Widgets.buttonFunctions.StartGameCallback;
 
 public class MainMenu extends Menu{
     public MainMenu(Game game) {
@@ -20,7 +19,7 @@ public class MainMenu extends Menu{
 
         AddWidget(new TextWidget(Game.WIDTH/2, Game.HEIGHT/2 - 48, this, "Glacier", 0xffffff, game));
 
-        group.AddWidget(new ButtonWidget(0, 0, "Start", this, new StartGameCallback(), game));
+        group.AddWidget(new ButtonWidget(0, 0, "Start", this, null, game));
         group.AddWidget(new ButtonWidget(0, 0, "Quit", this, new QuitGameCallback(), game));
     }
 }

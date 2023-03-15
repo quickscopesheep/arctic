@@ -15,7 +15,7 @@ public class ImageWidget extends Widget{
 
     @Override
     public void render(Screen screen) {
-        screen.renderSprite(x-sprite.getWidth()/2, y - sprite.getHeight()/2, sprite, false, true);
+        screen.renderSprite(x-sprite.getWidth()/2, y - sprite.getHeight()/2,99, sprite, false, true);
     }
 
     @Override

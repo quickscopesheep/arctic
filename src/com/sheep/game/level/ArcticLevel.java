@@ -30,7 +30,7 @@ public class ArcticLevel extends Level{
             }
         }
 
-        List<MathUtil.Vector2> treeSpawns = PoissonDisc.GeneratePoints(4, new MathUtil.Vector2(256, 256));
+        List<MathUtil.Vector2> treeSpawns = PoissonDisc.GeneratePoints(4, new MathUtil.Vector2(width, height));
 
         for(MathUtil.Vector2 spawn : treeSpawns){
             int node = random.nextInt(10);

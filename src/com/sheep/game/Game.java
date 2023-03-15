@@ -1,5 +1,6 @@
 package com.sheep.game;
 
+import com.sheep.game.UI.Hud.Hud;
 import com.sheep.game.UI.MainMenu;
 import com.sheep.game.UI.Menu;
 import com.sheep.game.entity.Mob.Player;
@@ -24,18 +25,17 @@ public class Game extends Canvas implements Runnable{
     private Screen screen;
 
     Menu[] menus = new Menu[]{
-        new MainMenu(this)
+        new MainMenu(this),
+        new Hud(this, 5)
     };
 
     public Menu currentMenu;
 
-    Level level;
-    Player player;
+    public Level level;
+    public Player player;
 
     private boolean running;
     public boolean gameStarted;
-
-    int cursorX, cursorY;
 
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
@@ -48,22 +48,22 @@ public class Game extends Canvas implements Runnable{
         frame = new JFrame();
         screen = new Screen(WIDTH, HEIGHT);
 
+        currentMenu = menus[1];
+
         Keyboard keyboard = new Keyboard();
         Mouse mouse = new Mouse(this);
-
-        currentMenu = menus[0];
 
         addKeyListener(keyboard);
         addMouseListener(mouse);
         addMouseMotionListener(mouse);
     }
 
-    public void StartGame(){
-        currentMenu = null;
-        level = new ArcticLevel(256, 256, 1, this);
+    public void init(){
+        level = new ArcticLevel(1024, 1024, RNG.nextInt(), this);
 
-        player = new Player(128*16, 128*16, level);
+        player = new Player(512*16, 512*16, level);
         level.AddEntity(player);
+
         gameStarted = true;
     }
 
@@ -125,6 +125,8 @@ public class Game extends Canvas implements Runnable{
         int ticks = 0;
         int frames = 0;
 
+        init();
+
         while (running){
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
@@ -141,12 +143,24 @@ public class Game extends Canvas implements Runnable{
 
             if(System.currentTimeMillis() - timer > 1000){
                 timer += 1000;
-                System.out.println("ticks: " + ticks + ", frames: " + frames);
+                frame.setTitle(String.format("Arctic | TPS: %d, FPS: %d, ENT: %d", ticks, frames, level.getEntities().size()));
                 ticks = 0;
                 frames = 0;
             }
         }
         stop();
+    }
+
+    public Screen getScreen() {
+        return screen;
+    }
+
+    public Menu getCurrentMenu() {
+        return currentMenu;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 
     public static void main(String[] args) {

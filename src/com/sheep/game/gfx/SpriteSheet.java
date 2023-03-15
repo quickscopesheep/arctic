@@ -11,6 +11,7 @@ public class SpriteSheet {
 
     public static SpriteSheet world = new SpriteSheet("/sprites/iceTileset.png", 640, 288);
     public static SpriteSheet player = new SpriteSheet("/sprites/player.png", 96, 16);
+    public static SpriteSheet items = new SpriteSheet("/sprites/items.png", 128, 128);
 
     public static SpriteSheet fontmap = new SpriteSheet("/sprites/fontmap.png", 128, 128);
     public static SpriteSheet UI = new SpriteSheet("/sprites/UI.png", 128, 128);
