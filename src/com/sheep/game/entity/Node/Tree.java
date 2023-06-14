@@ -31,7 +31,7 @@ public class Tree extends Node{
 
     @Override
     public void tick() {
-
+        super.tick();
     }
 
     @Override

@@ -29,7 +29,7 @@ public class Rock extends Node{
 
     @Override
     public void tick() {
-
+        super.tick();
     }
 
     @Override

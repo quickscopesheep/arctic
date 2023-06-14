@@ -1,7 +1,5 @@
 package com.sheep.game.item.tool;
 
-
-import com.sheep.game.Game;
 import com.sheep.game.entity.Mob.Mob;
 import com.sheep.game.item.Item;
 
