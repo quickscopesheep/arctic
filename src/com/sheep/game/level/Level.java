@@ -71,6 +71,13 @@ public abstract class Level {
 
     public abstract Tile getTile(int x, int y);
 
+    public void setTile(int x, int y, int t){
+        if(x < 0 || x >= width || y < 0 || y >= height)
+            return;
+
+        tiles[y*width+x] = t;
+    }
+
     public int getWidth() {
         return width;
     }

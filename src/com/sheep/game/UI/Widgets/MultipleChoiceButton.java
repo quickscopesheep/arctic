@@ -11,7 +11,9 @@ public class MultipleChoiceButton extends ButtonWidget{
     Game game;
 
     public MultipleChoiceButton(int x, int y, Menu parent, String[] options, int startIndex, Game game) {
-        super(x, y,"", parent, new IButton(), game);
+        super(x, y,"", parent, new IButton(){
+
+        }, game);
 
         this.options = options;
         this.index = startIndex;

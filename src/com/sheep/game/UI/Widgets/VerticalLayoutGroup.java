@@ -85,4 +85,12 @@ public class VerticalLayoutGroup extends Widget{
     public List<Widget> getWidgets() {
         return widgets;
     }
+
+    @Override
+    public void setActive(boolean active) {
+        super.setActive(active);
+        for (Widget widget : widgets) {
+            widget.setActive(active);
+        }
+    }
 }

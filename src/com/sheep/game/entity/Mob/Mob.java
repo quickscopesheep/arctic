@@ -41,12 +41,17 @@ public class Mob extends Entity {
     public void equipItem(Item item){
         if(this.item != null)
             this.item.onUnequipped();
+
         this.item = item;
-        this.item.onEquip(this);
+
+        if(this.item != null)
+            this.item.onEquip(this);
     }
 
     @Override
     public void tick(){
+        if(item != null)
+            item.tick();
         if(knockBackX > 1 || knockBackX < -1 || knockBackY > 1 || knockBackY < -1){
             float frameKnockBackX = knockBackX / knockBackTime;
             float frameKnockBackY = knockBackY / knockBackTime;
@@ -60,15 +65,15 @@ public class Mob extends Entity {
 
     @Override
     public void render(Screen screen) {
-
+        if(item != null)
+            item.render(screen);
     }
 
     public void move(float ax, float ay){
         boolean collidingX = false;
         boolean collidingY = false;
         for (Entity e : level.getEntities()) {
-            if(e != this){
-                //world's most autistic way of doing it but cleanest
+            if(e != this) {
                 collidingX = collision(e, ax, 0) || collidingX;
                 collidingY = collision(e, 0, ay) || collidingY;
             }

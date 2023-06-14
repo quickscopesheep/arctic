@@ -44,12 +44,16 @@ public class Sprite {
 
     //items
 
-    public static Sprite tool_hammer = new Sprite(0, 0, 16, 16, SpriteSheet.items);
-    public static Sprite tool_pickaxe = new Sprite(16, 0, 16, 16, SpriteSheet.items);
-
-    //UI
+    public static Sprite tool_sword = new Sprite(0, 0, 16, 16, SpriteSheet.items);
+    public static Sprite tool_axe = new Sprite(16, 0, 16, 16, SpriteSheet.items);
+    public static Sprite tool_pickaxe = new Sprite(32, 0, 16, 16, SpriteSheet.items);
+    public static Sprite tool_shovel = new Sprite(48, 0, 16, 16, SpriteSheet.items);
 
     public static Sprite item_frame = new Sprite(16, 0, 16, 16, SpriteSheet.UI);
+    public static Sprite item_frame_select = new Sprite(16, 16, 16, 16, SpriteSheet.UI);
+
+    public static Sprite cursor_building = new Sprite(0, 0, 16, 16, SpriteSheet.UI);
+    public static Sprite UI_arrow = new Sprite(32, 0, 16, 16, SpriteSheet.UI);
 
     public Sprite(int x, int y, int w, int h, SpriteSheet sheet){
         this.width = w;

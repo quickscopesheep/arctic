@@ -21,7 +21,7 @@ public abstract class Widget{
     boolean drawBorder;
     int borderColour;
 
-    boolean wasActiveLast;
+    boolean active;
 
     public Widget(int x, int y, int w, int h, Menu parent, Game game){
         this.x = x;
@@ -30,6 +30,7 @@ public abstract class Widget{
         this.h = h;
         this.parent = parent;
         this.audio = new AudioPlayer();
+        this.active = true;
 
         Mouse.AddListener(this);
         this.game = game;
@@ -44,7 +45,7 @@ public abstract class Widget{
         int actualX = x - (w/2);
         int actualY = y - (h/2);
         return Mouse.getMouseX() > actualX && Mouse.getMouseX() < actualX+w
-                && Mouse.getMouseY() > actualY && Mouse.getMouseY() < actualY+h;
+                && Mouse.getMouseY() > actualY && Mouse.getMouseY() < actualY+h && active;
     }
 
     public void render(Screen screen){
@@ -88,6 +89,10 @@ public abstract class Widget{
         return parent;
     }
 
+    public Game getGame() {
+        return game;
+    }
+
     public int getX() {
         return x;
     }
@@ -122,5 +127,13 @@ public abstract class Widget{
 
     public AudioPlayer getAudio() {
         return audio;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 }

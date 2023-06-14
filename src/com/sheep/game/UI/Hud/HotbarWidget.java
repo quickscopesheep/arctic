@@ -9,10 +9,12 @@ import com.sheep.game.item.Item;
 
 public class HotbarWidget extends Widget {
     Item item;
+    int index;
 
-    public HotbarWidget(int x, int y, Menu parent, Game game, Item item) {
+    public HotbarWidget(int x, int y, Menu parent, Game game, Item item, int index) {
         super(x, y, 16, 16, parent, game);
         this.item = item;
+        this.index = index;
     }
 
     @Override
@@ -24,7 +26,8 @@ public class HotbarWidget extends Widget {
     public void render(Screen screen) {
         super.render(screen);
 
-        screen.renderSprite(x-8, y-8, 99, Sprite.item_frame, false, true);
+        screen.renderSprite(x-8, y-8, 99, getGame().player.getHotbarIndex() == index ? Sprite.item_frame_select : Sprite.item_frame,
+                false, true);
 
         if(item != null)
             screen.renderSprite(x-8, y-8, 99, item.getIcon(), false, true);

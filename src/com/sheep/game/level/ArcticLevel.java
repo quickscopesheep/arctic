@@ -53,6 +53,7 @@ public class ArcticLevel extends Level{
         return switch (tiles[y * width + x]) {
             case 0 -> Tile.snowTile;
             case 1 -> Tile.iceTile;
+            case 2 -> Tile.floorTile;
             default -> Tile.voidTile;
         };
     }

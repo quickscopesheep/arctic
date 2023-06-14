@@ -10,6 +10,7 @@ public abstract class Tile {
     public static Tile voidTile = new VoidTile();
     public static Tile snowTile = new SnowTile();
     public static Tile iceTile = new IceTile();
+    public static Tile floorTile = new FloorTile();
 
     public Tile(Sprite sprite){
         this.sprite = sprite;

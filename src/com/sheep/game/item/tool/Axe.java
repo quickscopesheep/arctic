@@ -1,42 +1,43 @@
 package com.sheep.game.item.tool;
 
-import com.sheep.game.Game;
 import com.sheep.game.entity.Mob.Mob;
+import com.sheep.game.entity.Node.Node;
+import com.sheep.game.gfx.Screen;
 import com.sheep.game.gfx.Sprite;
 
-public class BuildingHammer extends Tool{
-    public BuildingHammer(Mob owner) {
-        super(owner);
+public class Axe extends HarvestTool{
+    public Axe(Mob owner) {
+        super(owner, Node.Type.TREE, 1, 0.5f, 20, 25);
     }
 
     @Override
     public void use() {
+        super.use();
+    }
+
+    @Override
+    public void tick() {
 
     }
 
     @Override
-    public void onEquip(Mob owner) {
-        super.onEquip(owner);
-    }
+    public void render(Screen screen) {
 
-    @Override
-    public void onUnequipped() {
-        super.onUnequipped();
     }
 
     @Override
     public String getName() {
-        return "Building Hammer";
+        return "Axe";
     }
 
     @Override
     public Sprite getIcon() {
-        return Sprite.tool_hammer;
+        return Sprite.tool_axe;
     }
 
     @Override
     public Sprite getGfx() {
-        return Sprite.tool_hammer;
+        return Sprite.tool_axe;
     }
 
     @Override

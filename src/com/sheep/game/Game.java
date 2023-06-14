@@ -24,7 +24,7 @@ public class Game extends Canvas implements Runnable{
     private JFrame frame;
     private Screen screen;
 
-    Menu[] menus = new Menu[]{
+    public Menu[] menus = new Menu[]{
         new MainMenu(this),
         new Hud(this, 5)
     };
@@ -34,7 +34,7 @@ public class Game extends Canvas implements Runnable{
     public Level level;
     public Player player;
 
-    private boolean running;
+    public boolean running;
     public boolean gameStarted;
 
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -48,7 +48,7 @@ public class Game extends Canvas implements Runnable{
         frame = new JFrame();
         screen = new Screen(WIDTH, HEIGHT);
 
-        currentMenu = menus[1];
+        currentMenu = menus[0];
 
         Keyboard keyboard = new Keyboard();
         Mouse mouse = new Mouse(this);
@@ -56,6 +56,8 @@ public class Game extends Canvas implements Runnable{
         addKeyListener(keyboard);
         addMouseListener(mouse);
         addMouseMotionListener(mouse);
+
+
     }
 
     public void init(){
@@ -87,6 +89,9 @@ public class Game extends Canvas implements Runnable{
             level.tick();
             level.setScroll((int)player.getX() - WIDTH/2 + 8, (int)player.getY() - HEIGHT/2 + 8);
         }
+
+        if(currentMenu != null)
+            currentMenu.tick();
     }
 
     void render(){
@@ -125,8 +130,6 @@ public class Game extends Canvas implements Runnable{
         int ticks = 0;
         int frames = 0;
 
-        init();
-
         while (running){
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
@@ -143,7 +146,7 @@ public class Game extends Canvas implements Runnable{
 
             if(System.currentTimeMillis() - timer > 1000){
                 timer += 1000;
-                frame.setTitle(String.format("Arctic | TPS: %d, FPS: %d, ENT: %d", ticks, frames, level.getEntities().size()));
+                frame.setTitle(String.format("Arctic | TPS: %d, FPS: %d, ENT: %d", ticks, frames, level != null ? level.getEntities().size() : 0));
                 ticks = 0;
                 frames = 0;
             }

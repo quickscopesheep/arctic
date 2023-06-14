@@ -27,13 +27,15 @@ public abstract class Menu {
 
     public void tick(){
         for (Widget w : widgets) {
-            w.tick();
+            if(w.isActive())
+                w.tick();
         }
     }
 
     public void render(Screen screen){
         for (Widget w : widgets) {
-            w.render(screen);
+            if(w.isActive())
+                w.render(screen);
         }
     }
 

@@ -4,16 +4,23 @@ import com.sheep.game.gfx.Screen;
 import com.sheep.game.gfx.Sprite;
 import com.sheep.game.level.Level;
 import com.sheep.game.level.tiles.Tile;
+import com.sheep.game.util.AudioPlayer;
 
 import java.awt.*;
 
 public class Tree extends Node{
+
     public Tree(float startX, float startY, Level level) {
-        super(startX, startY, level, 100);
+        super(startX, startY, level, 100, Type.TREE, AudioPlayer.WOOD_CHOP);
         setxBound(20);
         setyBound(52);
         setxBoundOffset(6);
         setyBoundOffset(6);
+    }
+
+    @Override
+    public void Damage(float damage, float knockBackX, float knockBackY, float knockBackTime) {
+        super.Damage(damage, knockBackX, knockBackY, knockBackTime);
     }
 
     @Override

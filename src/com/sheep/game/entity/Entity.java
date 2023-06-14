@@ -10,6 +10,8 @@ public abstract class Entity {
     protected int xBound, yBound;
     protected int xBoundOffset, yBoundOffset;
 
+    protected int flags;
+
     protected Level level;
     protected boolean removed;
 
@@ -43,6 +45,14 @@ public abstract class Entity {
     public void remove(){
         removed = true;
         level.RemoveEntity(this);
+    }
+
+    public void AddFlag(int flag){
+        flags |= flag;
+    }
+
+    public boolean HasFlag(int flag){
+        return (flags & flag) == flag;
     }
 
     public Rectangle GetBounds(){
@@ -89,6 +99,10 @@ public abstract class Entity {
 
     public int getyBound() {
         return yBound;
+    }
+
+    public int getFlags() {
+        return flags;
     }
 
     public void setyBound(int yBound) {

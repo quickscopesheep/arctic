@@ -87,8 +87,9 @@ public class Screen {
                 if(ya > height - 1) continue;
 
                 int col = sprite.pixels[y * sprite.getWidth() + xs];
-                if(col == 0xffffffff)
+                if(col == 0xffffffff){
                     pixels[ya * width + xa] = colour;
+                }
             }
         }
     }
